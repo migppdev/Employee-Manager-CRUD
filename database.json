@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "nombre": "Paco",
+    "apellidos": {
+      "primer_apellido": "Rodriguez",
+      "segundo_apellido": "Jimenez"
+    },
+    "dni": "48273615Z",
+    "puesto": "Recepcionista",
+    "fecha_incorporacion": "23/07/2025",
+    "salario_base": 1050
+  },
+  {
+    "id": 2,
+    "nombre": "Laura",
+    "apellidos": {
+      "primer_apellido": "Garcia",
+      "segundo_apellido": "Martinez"
+    },
+    "dni": "58321476M",
+    "puesto": "Vendedora de instrumentos",
+    "fecha_incorporacion": "05/08/2025",
+    "salario_base": 1250
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos",
+    "apellidos": {
+      "primer_apellido": "Fernandez",
+      "segundo_apellido": "Lopez"
+    },
+    "dni": "37184529P",
+    "puesto": "Tecnico de sonido",
+    "fecha_incorporacion": "12/06/2025",
+    "salario_base": 1450
+  },
+  {
+    "id": 4,
+    "nombre": "Marta",
+    "apellidos": {
+      "primer_apellido": "Sanchez",
+      "segundo_apellido": "Navarro"
+    },
+    "dni": "62947183R",
+    "puesto": "Dependienta",
+    "fecha_incorporacion": "18/09/2025",
+    "salario_base": 1200
+  },
+  {
+    "id": 5,
+    "nombre": "Javier",
+    "apellidos": {
+      "primer_apellido": "Perez",
+      "segundo_apellido": "Moreno"
+    },
+    "dni": "71462935W",
+    "puesto": "Vendedor de guitarras",
+    "fecha_incorporacion": "03/03/2025",
+    "salario_base": 1350
+  },
+  {
+    "id": 6,
+    "nombre": "Ana",
+    "apellidos": {
+      "primer_apellido": "Martin",
+      "segundo_apellido": "Ruiz"
+    },
+    "dni": "45821763F",
+    "puesto": "Administrativa",
+    "fecha_incorporacion": "27/01/2025",
+    "salario_base": 1500
+  },
+  {
+    "id": 7,
+    "nombre": "David",
+    "apellidos": {
+      "primer_apellido": "Diaz",
+      "segundo_apellido": "Castro"
+    },
+    "dni": "69253814C",
+    "puesto": "Almacenista",
+    "fecha_incorporacion": "14/04/2025",
+    "salario_base": 1150
+  },
+  {
+    "id": 8,
+    "nombre": "Elena",
+    "apellidos": {
+      "primer_apellido": "Morales",
+      "segundo_apellido": "Vega"
+    },
+    "dni": "82631457T",
+    "puesto": "Vendedora de discos",
+    "fecha_incorporacion": "09/05/2025",
+    "salario_base": 1200
+  },
+  {
+    "id": 9,
+    "nombre": "Sergio",
+    "apellidos": {
+      "primer_apellido": "Ortega",
+      "segundo_apellido": "Ramos"
+    },
+    "dni": "31582746G",
+    "puesto": "Tecnico de instrumentos",
+    "fecha_incorporacion": "21/02/2025",
+    "salario_base": 1600
+  },
+  {
+    "id": 10,
+    "nombre": "Lucia",
+    "apellidos": {
+      "primer_apellido": "Molina",
+      "segundo_apellido": "Iglesias"
+    },
+    "dni": "54719362Y",
+    "puesto": "Dependienta",
+    "fecha_incorporacion": "16/10/2025",
+    "salario_base": 1150
+  },
+  {
+    "id": 11,
+    "nombre": "Alberto",
+    "apellidos": {
+      "primer_apellido": "Vazquez",
+      "segundo_apellido": "Santos"
+    },
+    "dni": "76382145L",
+    "puesto": "Encargado de tienda",
+    "fecha_incorporacion": "07/07/2025",
+    "salario_base": 1850
+  },
+  {
+    "id": 12,
+    "nombre": "Cristina",
+    "apellidos": {
+      "primer_apellido": "Ramos",
+      "segundo_apellido": "Blanco"
+    },
+    "dni": "29461738H",
+    "puesto": "Marketing",
+    "fecha_incorporacion": "11/11/2025",
+    "salario_base": 1650
+  },
+  {
+    "id": 13,
+    "nombre": "Miguel",
+    "apellidos": {
+      "primer_apellido": "Torres",
+      "segundo_apellido": "Gil"
+    },
+    "dni": "68145293K",
+    "puesto": "Luthier",
+    "fecha_incorporacion": "25/03/2025",
+    "salario_base": 1700
+  },
+  {
+    "id": 14,
+    "nombre": "Sara",
+    "apellidos": {
+      "primer_apellido": "Cortes",
+      "segundo_apellido": "Mendez"
+    },
+    "dni": "43927516S",
+    "puesto": "Atencion al cliente",
+    "fecha_incorporacion": "30/06/2025",
+    "salario_base": 1100
+  },
+  {
+    "id": 15,
+    "nombre": "Daniel",
+    "apellidos": {
+      "primer_apellido": "Romero",
+      "segundo_apellido": "Herrera"
+    },
+    "dni": "81736425V",
+    "puesto": "Especialista en sonido",
+    "fecha_incorporacion": "19/08/2025",
+    "salario_base": 1800
+  },
+  {
+    "id": 16,
+    "nombre": "Paula",
+    "apellidos": {
+      "primer_apellido": "Dominguez",
+      "segundo_apellido": "Serrano"
+    },
+    "dni": "52618394J",
+    "puesto": "Auxiliar de tienda",
+    "fecha_incorporacion": "02/09/2025",
+    "salario_base": 1180
+  },
+  {
+    "id": 17,
+    "nombre": "Antonio",
+    "apellidos": {
+      "primer_apellido": "Cabrera",
+      "segundo_apellido": "Prieto"
+    },
+    "dni": "34871526N",
+    "puesto": "Tecnico de reparacion",
+    "fecha_incorporacion": "15/01/2025",
+    "salario_base": 1550
+  },
+  {
+    "id": 18,
+    "nombre": "Irene",
+    "apellidos": {
+      "primer_apellido": "Duran",
+      "segundo_apellido": "Fuentes"
+    },
+    "dni": "97521843D",
+    "puesto": "Vendedora de teclados",
+    "fecha_incorporacion": "28/04/2025",
+    "salario_base": 1350
+  },
+  {
+    "id": 19,
+    "nombre": "Fernando",
+    "apellidos": {
+      "primer_apellido": "Sanz",
+      "segundo_apellido": "Rey"
+    },
+    "dni": "61243758B",
+    "puesto": "Jefe de ventas",
+    "fecha_incorporacion": "10/02/2025",
+    "salario_base": 2000
+  },
+  {
+    "id": 20,
+    "nombre": "Nuria",
+    "apellidos": {
+      "primer_apellido": "Vidal",
+      "segundo_apellido": "Pascual"
+    },
+    "dni": "75382614X",
+    "puesto": "Vendedora de accesorios",
+    "fecha_incorporacion": "06/05/2025",
+    "salario_base": 1250
+  },
+  {
+    "id": 21,
+    "nombre": "Raul",
+    "apellidos": {
+      "primer_apellido": "Marquez",
+      "segundo_apellido": "Nieto"
+    },
+    "dni": "48162573Q",
+    "puesto": "Responsable de almacen",
+    "fecha_incorporacion": "22/09/2025",
+    "salario_base": 1400
+  }
+]
