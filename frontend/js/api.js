@@ -1,6 +1,6 @@
-import { calcularAntiguedad } from "./utils.js";
+import { calcularAntiguedad, calcularSalario } from "./utils.js";
 
-const tablaEmpleados = document.getElementById("tabla-empleados");
+const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
 
 window.addEventListener("load", () => {
   cargarEmpleados();
@@ -14,6 +14,7 @@ function cargarEmpleados() {
     .then((response) => response.json())
     .then((empleados) => {
       empleados.forEach((empleado) => {
+        const antiguedad = calcularAntiguedad(empleado.fecha_incorporacion);
         tablaEmpleados.innerHTML += `
         <tr>
             <td>${empleado.nombre}</td>
@@ -22,9 +23,12 @@ function cargarEmpleados() {
             <td>${empleado.puesto}</td>
             <td>${empleado.fecha_incorporacion}</td>
             <td>${empleado.salario_base}</td>
-            <td>${calcularAntiguedad(empleado.fecha_incorporacion)}
-            <td>?</td> 
-            <td>ACCIONES</td>
+            <td>${antiguedad}
+            <td>${calcularSalario(empleado.salario_base, antiguedad)}</td> 
+            <td>
+              <button class="btn-accion">Editar</button>
+              <button class="btn-accion btn-del">Eliminar</button>
+            </td>
         </tr>
         `;
       });

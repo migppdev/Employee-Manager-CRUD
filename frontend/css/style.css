@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  margin: 1em;
+  text-align: center;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#tabla-empleados {
+  border-collapse: collapse;
+  margin-top: 2em;
+}
+
+#tabla-empleados caption {
+  margin-bottom: 1em;
+  caption-side: top;
+  text-align: left;
+}
+
+#tabla-empleados th {
+  background-color: aquamarine;
+}
+
+/* Seleccionar las filas pares de la tabla y darles color para mejor visibilidad */
+#cuerpo-tabla-empleados tr:nth-child(even) {
+  background-color: aliceblue;
+}
+
+nav {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.btn,
+.btn-accion {
+  padding: 1em;
+  border: none;
+  transition: transform ease-in-out 0.1s;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+#crear-empleado-btn {
+  background-color: aqua;
+}
+
+#crear-empleado-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-accion {
+  padding: 0.5em;
+}
+
+.btn-del {
+  background-color: lightcoral;
+}
