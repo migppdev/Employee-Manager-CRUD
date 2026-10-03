@@ -10,7 +10,9 @@
     <header>
       <h1>PANEL DE GESTIÓN - RRHH</h1>
       <nav>
-        <button class="btn" id="crear-empleado-btn">Crear empleado</button>
+        <button class="btn" id="abrir-modal-crear-empleado">
+          Crear empleado
+        </button>
         <button class="btn" id="nominas-btn">Generar nóminas</button>
       </nav>
     </header>
@@ -34,6 +36,50 @@
         </thead>
         <tbody id="cuerpo-tabla-empleados"></tbody>
       </table>
+      <!-- ============ CREAR EMPLEADO  ============ -->
+
+      <div id="modal-crear-empleado" class="modal">
+        <h1>Crear empleado</h1>
+        <form action="" class="form">
+          <div class="fila-form">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombret" required />
+          </div>
+          <div class="fila-form">
+            <label for="apellido-1">Primer apellido</label>
+            <input type="text" id="apellido-1" required />
+          </div>
+
+          <div class="fila-form">
+            <label for="apellido-2">Segundo apellido</label>
+            <input type="text" id="apellido-2" />
+          </div>
+
+          <div class="fila-form">
+            <label for="puesto">Puesto</label>
+            <input type="text" id="puesto" />
+          </div>
+
+          <div class="fila-form">
+            <label for="fecha-incorporacion">Fecha de incorporación</label>
+            <input type="date" id="fecha-incorporacion" />
+          </div>
+
+          <div class="fila-form">
+            <label for="salario-base">Salario base</label>
+            <input type="number" id="salario-base" />
+          </div>
+
+          <div class="fila-botones">
+            <button type="submit" class="btn" id="crear-empleado-modal-btn">
+              Crear
+            </button>
+            <button type="button" class="btn" id="cerrar-modal-btn">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
 
     <script type="module" src="./js/api.js"></script>

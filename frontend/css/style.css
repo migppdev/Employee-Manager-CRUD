@@ -20,6 +20,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #tabla-empleados {
@@ -64,11 +65,11 @@ nav {
   transform: scale(0.98);
 }
 
-#crear-empleado-btn {
+#abrir-modal-crear-empleado {
   background-color: aqua;
 }
 
-#crear-empleado-btn:active {
+#abrir-modal-crear-empleado:active {
   transform: scale(0.98);
 }
 
@@ -78,4 +79,44 @@ nav {
 
 .btn-del {
   background-color: lightcoral;
+}
+
+/* ============ MODAL ============ */
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+#modal-crear-empleado {
+  background-color: aliceblue;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50vh;
+  height: fit-content;
+  padding: 3em;
+}
+
+.fila-form {
+  display: flex;
+  gap: 2em;
+}
+
+.fila-form input {
+  margin-left: auto;
+}
+
+.modal .fila-botones {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.modal #crear-empleado-btn {
+  background-color: lightgreen;
 }
