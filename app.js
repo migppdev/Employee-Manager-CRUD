@@ -8,11 +8,11 @@ app.use(express.json());
 const fs = require("fs");
 const archivo = "./database.json";
 
-/* API PRINCIPAL */
 app.get("/", (req, res) => {
   res.send("Bienvenido al panel de Recursos Humanos");
 });
 
+// =========== DEVOLVER EMPLEADOS  ===========
 app.get("/empleados", (req, res) => {
   const archivo = fs.readFileSync("./database.json");
   const datos = JSON.parse(archivo);
