@@ -23,7 +23,7 @@ function cargarEmpleados() {
             <td>${empleado.puesto}</td>
             <td>${empleado.fecha_incorporacion}</td>
             <td>${empleado.salario_base}</td>
-            <td>${antiguedad}
+            <td>${antiguedad}</td>
             <td>${calcularSalario(empleado.salario_base, antiguedad)}</td> 
             <td>
               <button class="btn-accion">Editar</button>

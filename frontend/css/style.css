@@ -84,30 +84,41 @@ nav {
 /* ============ MODAL ============ */
 
 .modal {
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modal-crear-empleado {
-  background-color: aliceblue;
+.modal-contenido {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  padding: 30px;
+  background-color: white;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 50vh;
+  width: 100%;
   height: fit-content;
   padding: 3em;
+  gap: 1em;
 }
 
 .fila-form {
   display: flex;
-  gap: 2em;
 }
 
 .fila-form input {
   margin-left: auto;
+  padding: 0.5em;
 }
 
 .modal .fila-botones {
