@@ -1,7 +1,22 @@
-import { calcularAntiguedad, calcularSalario } from "./utils.js";
-import { cerrarModales } from "./main.js";
+import {
+  calcularAntiguedad,
+  calcularSalario,
+  cerrarModales,
+  obtenerCamposErroneos,
+  marcarCampoError,
+  limpiarEstiloError,
+} from "./utils.js";
 
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
+export const listaCampos = [
+  "nombre",
+  "apellido-1",
+  "apellido-2",
+  "dni",
+  "puesto",
+  "fecha-incorporacion",
+  "salario-base",
+];
 
 window.addEventListener("load", () => {
   cargarEmpleados();
@@ -49,20 +64,31 @@ export function crearEmpleado() {
     salario_base: document.getElementById("salario-base").value,
   };
 
-  // Realizar una peticion POST a la API con los datos del empleado
+  let camposErroneos = obtenerCamposErroneos(empleado);
 
-  fetch("/crearEmpleado", {
-    method: "POST",
+  // Comprobar si hay campos erroneos
+  if (camposErroneos.length === 0) {
+    // Realizar una peticion POST a la API con los datos del empleado
+    fetch("/crearEmpleado", {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
-    },
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-    body: JSON.stringify(empleado),
-  })
-    .then((response) => response.json())
-    .then(() => {
-      cargarEmpleados();
-      cerrarModales();
+      body: JSON.stringify(empleado),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        console.log("He llegado al cerrar");
+
+        cargarEmpleados();
+        limpiarEstiloError(listaCampos);
+        cerrarModales();
+      });
+  } else {
+    camposErroneos.forEach((campo) => {
+      marcarCampoError(campo);
     });
+  }
 }

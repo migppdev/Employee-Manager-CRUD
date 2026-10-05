@@ -1,3 +1,13 @@
+export const listaCampos = [
+  "nombre",
+  "apellido-1",
+  "apellido-2",
+  "dni",
+  "puesto",
+  "fecha-incorporacion",
+  "salario-base",
+];
+
 // =========== CALCULAR ANTIGUEDAD ===========
 export function calcularAntiguedad(fechaInicio) {
   // Convertir la String fechaInicio a un objeto Date para poder usar los metodos
@@ -44,4 +54,67 @@ export function calcularSalario(salarioBase, antiguedad) {
     // redondear a 2 decimales
     return salarioBase;
   }
+}
+
+export function limpiarModal() {
+  listaCampos.forEach((campo) => {
+    document.getElementById(campo).value = "";
+  });
+}
+
+export function cerrarModales() {
+  document.getElementById("modal-crear-empleado").style.display = "none";
+  limpiarEstiloError(listaCampos);
+  limpiarModal();
+}
+
+export function comprobarDNI(dni) {
+  // Comprobar DNI
+  let regexDNI = /^[0-9]{8}[A-Z]$/g;
+
+  return dni.test(regexDNI);
+}
+
+export function comprobarNombre(nombre) {
+  return nombre.test(/^[a-zA-Z]{2,}$/);
+}
+// Funcion para obtener los campos erroneos en un empleado
+export function obtenerCamposErroneos(empleado) {
+  // Crear una array vacia para ir metiendo el id de los campos erroneos
+  let camposErroneos = [];
+
+  if (!comprobarDNI(empleado.dni)) {
+    camposErroneos.push("dni");
+  }
+  if (!comprobarNombre(empleado.nombre)) {
+    camposErroneos.push("nombre");
+  }
+  if (!comprobarNombre(empleado.apellido1)) {
+    camposErroneos.push("apellido-1");
+  }
+  if (!comprobarNombre(empleado.apellido2)) {
+    camposErroneos.push("apellido-2");
+  }
+
+  return camposErroneos;
+}
+
+export function marcarCampoError(idCampo) {
+  document.getElementById(idCampo).style.borderColor = "red";
+  document.getElementById(idCampo).style.borderWidth = "3px";
+}
+
+export function limpiarEstiloError(campos) {
+  //  Si se pasa una array, recorrer cada campo y quitarle el estilo
+  if (Array.isArray(campos)) {
+    campos.forEach((campo) => {
+      document.getElementById(campo).style.borderColor = "";
+      document.getElementById(campo).style.borderWidth = "";
+    });
+    return;
+  }
+
+  // Si no es una array, quitar el estilo una sola vez
+  document.getElementById(campos).style.borderColor = "";
+  document.getElementById(campos).style.borderWidth = "";
 }
