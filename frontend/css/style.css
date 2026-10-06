@@ -131,3 +131,15 @@ nav {
 .modal #crear-empleado-btn {
   background-color: lightgreen;
 }
+
+.notificacion {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+
+  background-color: antiquewhite;
+  display: none;
+  gap: 2em;
+  padding: 20px;
+}

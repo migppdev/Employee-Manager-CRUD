@@ -70,14 +70,14 @@ export function cerrarModales() {
 
 export function comprobarDNI(dni) {
   // Comprobar DNI
-  let regexDNI = /^[0-9]{8}[A-Z]$/g;
-
-  return dni.test(regexDNI);
+  let regexDNI = /^[0-9]{8}[A-Z]$/;
+  return regexDNI.test(dni);
 }
 
 export function comprobarNombre(nombre) {
-  return nombre.test(/^[a-zA-Z]{2,}$/);
+  return /^[a-zA-Z]{2,}$/.test(nombre);
 }
+
 // Funcion para obtener los campos erroneos en un empleado
 export function obtenerCamposErroneos(empleado) {
   // Crear una array vacia para ir metiendo el id de los campos erroneos
@@ -101,7 +101,7 @@ export function obtenerCamposErroneos(empleado) {
 
 export function marcarCampoError(idCampo) {
   document.getElementById(idCampo).style.borderColor = "red";
-  document.getElementById(idCampo).style.borderWidth = "3px";
+  document.getElementById(idCampo).style.borderWidth = "2px";
 }
 
 export function limpiarEstiloError(campos) {
@@ -117,4 +117,22 @@ export function limpiarEstiloError(campos) {
   // Si no es una array, quitar el estilo una sola vez
   document.getElementById(campos).style.borderColor = "";
   document.getElementById(campos).style.borderWidth = "";
+}
+
+export function notificar(mensaje, tipo) {
+  console.log("Entra en la funcion de notificar");
+  document.getElementById("notificacion").style.display = "flex";
+  const notificacionIcono = document.getElementById("notificacion-icono");
+  const notificacionContenido = document.getElementById(
+    "notificacion-contenido",
+  );
+
+  notificacionContenido.innerHTML = mensaje;
+
+  if (tipo === "err") {
+    notificacionIcono.innerHTML = "X";
+  }
+  if (tipo === "info") {
+    notificacionIcono.innerHTML = "i";
+  }
 }

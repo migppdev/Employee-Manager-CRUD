@@ -274,5 +274,113 @@
         "puesto": "Paco",
         "fecha_incorporacion": "2026-10-06",
         "salario_base": "1234"
+    },
+    {
+        "id": 24,
+        "nombre": "Paco",
+        "apellidos": {
+            "primer_apellido": "Rodriguez",
+            "segundo_apellido": "Jimenez"
+        },
+        "dni": "12345678A",
+        "puesto": "Recepcionista",
+        "fecha_incorporacion": "2026-10-06",
+        "salario_base": "1050"
+    },
+    {
+        "id": 25,
+        "nombre": "Paco",
+        "apellidos": {
+            "primer_apellido": "Rodriguez",
+            "segundo_apellido": "Jimenez"
+        },
+        "dni": "12345678A",
+        "puesto": "Recepcionista",
+        "fecha_incorporacion": "2026-10-07",
+        "salario_base": "12312"
+    },
+    {
+        "id": 26,
+        "nombre": "Paco",
+        "apellidos": {
+            "primer_apellido": "Rodriguez",
+            "segundo_apellido": "Garcia"
+        },
+        "dni": "12345678A",
+        "puesto": "Guitarrista",
+        "fecha_incorporacion": "2026-10-07",
+        "salario_base": "1234"
+    },
+    {
+        "id": 27,
+        "nombre": "hola",
+        "apellidos": {
+            "primer_apellido": "hola",
+            "segundo_apellido": "hola"
+        },
+        "dni": "12345678Z",
+        "puesto": "hola",
+        "fecha_incorporacion": "2026-09-30",
+        "salario_base": "1234"
+    },
+    {
+        "id": 28,
+        "nombre": "test",
+        "apellidos": {
+            "primer_apellido": "test",
+            "segundo_apellido": "test"
+        },
+        "dni": "12321222Z",
+        "puesto": "test",
+        "fecha_incorporacion": "2026-10-14",
+        "salario_base": "123"
+    },
+    {
+        "id": 29,
+        "nombre": "test",
+        "apellidos": {
+            "primer_apellido": "test",
+            "segundo_apellido": "test"
+        },
+        "dni": "12312322Z",
+        "puesto": "test",
+        "fecha_incorporacion": "2026-10-13",
+        "salario_base": "123"
+    },
+    {
+        "id": 30,
+        "nombre": "test",
+        "apellidos": {
+            "primer_apellido": "test",
+            "segundo_apellido": "test"
+        },
+        "dni": "12312322Z",
+        "puesto": "test",
+        "fecha_incorporacion": "2026-10-07",
+        "salario_base": "1234"
+    },
+    {
+        "id": 31,
+        "nombre": "test",
+        "apellidos": {
+            "primer_apellido": "test",
+            "segundo_apellido": "test"
+        },
+        "dni": "12312322Z",
+        "puesto": "test",
+        "fecha_incorporacion": "2026-10-07",
+        "salario_base": "1234"
+    },
+    {
+        "id": 32,
+        "nombre": "test",
+        "apellidos": {
+            "primer_apellido": "test",
+            "segundo_apellido": "test"
+        },
+        "dni": "12312322Z",
+        "puesto": "test",
+        "fecha_incorporacion": "2026-10-14",
+        "salario_base": "1234"
     }
 ]

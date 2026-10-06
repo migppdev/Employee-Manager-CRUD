@@ -5,18 +5,12 @@ import {
   obtenerCamposErroneos,
   marcarCampoError,
   limpiarEstiloError,
+  notificar,
 } from "./utils.js";
 
+import { listaCampos } from "./utils.js";
+
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
-export const listaCampos = [
-  "nombre",
-  "apellido-1",
-  "apellido-2",
-  "dni",
-  "puesto",
-  "fecha-incorporacion",
-  "salario-base",
-];
 
 window.addEventListener("load", () => {
   cargarEmpleados();
@@ -80,11 +74,10 @@ export function crearEmpleado() {
     })
       .then((response) => response.json())
       .then(() => {
-        console.log("He llegado al cerrar");
-
         cargarEmpleados();
         limpiarEstiloError(listaCampos);
         cerrarModales();
+        notificar("Empleado creado correctamente", "info");
       });
   } else {
     camposErroneos.forEach((campo) => {
