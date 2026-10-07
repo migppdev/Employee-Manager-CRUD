@@ -12,6 +12,8 @@ import { listaCampos } from "./utils.js";
 
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
 
+window.notificar = notificar;
+
 window.addEventListener("load", () => {
   cargarEmpleados();
 });
@@ -20,6 +22,7 @@ window.addEventListener("load", () => {
 
 // Insertar empleados en la tabla
 function cargarEmpleados() {
+  tablaEmpleados.innerHTML = "";
   fetch("/empleados")
     .then((response) => response.json())
     .then((empleados) => {
@@ -37,8 +40,10 @@ function cargarEmpleados() {
             <td>${antiguedad}</td>
             <td>${calcularSalario(empleado.salario_base, antiguedad)}</td> 
             <td>
-              <button class="btn-accion">Editar</button>
-              <button class="btn-accion btn-del">Eliminar</button>
+              <button class="btn-accion" data-id="${empleado.id}">Editar</button>
+
+              <button class="btn-accion btn-eliminar " data-id="${empleado.id}">Eliminar</button>
+              
             </td>
         </tr>
         `;
@@ -85,3 +90,16 @@ export function crearEmpleado() {
     });
   }
 }
+
+// =========== ELIMINAR EMPLEADO ===========
+
+export const eliminarEmpleado = (idEmpleado) => {
+  fetch("/eliminarEmpleado/" + idEmpleado, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then(() => {
+      cargarEmpleados();
+      notificar("Empleado eliminado correctamente", "info");
+    });
+};

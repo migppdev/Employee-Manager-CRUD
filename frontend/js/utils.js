@@ -119,13 +119,16 @@ export function limpiarEstiloError(campos) {
   document.getElementById(campos).style.borderWidth = "";
 }
 
+let temporizador;
+
 export function notificar(mensaje, tipo) {
-  console.log("Entra en la funcion de notificar");
-  document.getElementById("notificacion").style.display = "flex";
+  const notificacion = document.getElementById("notificacion");
   const notificacionIcono = document.getElementById("notificacion-icono");
   const notificacionContenido = document.getElementById(
     "notificacion-contenido",
   );
+
+  document.getElementById("notificacion").style.display = "flex";
 
   notificacionContenido.innerHTML = mensaje;
 
@@ -135,4 +138,11 @@ export function notificar(mensaje, tipo) {
   if (tipo === "info") {
     notificacionIcono.innerHTML = "i";
   }
+
+  clearTimeout(temporizador); // Quitar el temporizador
+
+  // Crear el temporizador (2.5s), que ejecutará el cambio de estilo (ocultar la notificacion)
+  temporizador = setTimeout(() => {
+    notificacion.style.display = "none";
+  }, 2500);
 }

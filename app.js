@@ -57,3 +57,21 @@ app.post("/crearEmpleado", (req, res) => {
 app.listen(PORT, () => {
   console.log("Servidor iniciado en http://localhost:" + PORT);
 });
+
+// =========== ELIMINAR EMPLEADO ===========
+app.delete("/eliminarEmpleado/:id", (req, res) => {
+  const archivo = "./database.json";
+  const datos = fs.readFileSync(archivo);
+
+  // Guardar los empleados actuales en un array
+  let empleados = JSON.parse(datos);
+
+  const empleadosNuevos = empleados.filter(
+    (empleado) => empleado.id != req.params.id,
+  );
+
+  // Escribir de nuevo los empleados ya filtrados
+  fs.writeFileSync(archivo, JSON.stringify(empleadosNuevos, null, 4));
+
+  res.json(empleadosNuevos);
+});

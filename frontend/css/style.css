@@ -77,7 +77,7 @@ nav {
   padding: 0.5em;
 }
 
-.btn-del {
+.btn-eliminar {
   background-color: lightcoral;
 }
 
@@ -131,7 +131,6 @@ nav {
 .modal #crear-empleado-btn {
   background-color: lightgreen;
 }
-
 .notificacion {
   position: fixed;
   bottom: 20px;
