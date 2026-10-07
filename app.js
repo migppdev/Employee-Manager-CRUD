@@ -6,11 +6,6 @@ app.use(express.static("frontend"));
 app.use(express.json());
 
 const fs = require("fs");
-const archivo = "./database.json";
-
-app.get("/", (req, res) => {
-  res.send("Bienvenido al panel de Recursos Humanos");
-});
 
 // =========== DEVOLVER EMPLEADOS  ===========
 app.get("/empleados", (req, res) => {
@@ -54,8 +49,35 @@ app.post("/crearEmpleado", (req, res) => {
   res.json(empleado);
 });
 
-app.listen(PORT, () => {
-  console.log("Servidor iniciado en http://localhost:" + PORT);
+// =========== EDITAR EMPLEADO ===========
+app.put("/editarEmpleado/:id", (req, res) => {
+  const archivo = "./database.json";
+  const datos = fs.readFileSync(archivo);
+
+  let empleados = JSON.parse(datos);
+
+  // Guardar el indice del empleado a editar dentro de la lista de empleados anterior
+  const indiceEmpleadoEditar = empleados.findIndex(
+    (empleado) => empleado.id == req.params.id,
+  );
+
+  // Modificar los datos del empleado a editar en el array de empleados
+  empleados[indiceEmpleadoEditar].nombre = req.body.nombre;
+  empleados[indiceEmpleadoEditar].apellidos.apellido_1 =
+    req.body.apellidos.apellido_1;
+  empleados[indiceEmpleadoEditar].apellidos.apellido_2 =
+    req.body.apellidos.apellido_2;
+  empleados[indiceEmpleadoEditar].dni = req.body.dni;
+  empleados[indiceEmpleadoEditar].puesto = req.body.puesto;
+  empleados[indiceEmpleadoEditar].fecha_incorporacion =
+    req.body.fecha_incorporacion;
+  empleados[indiceEmpleadoEditar].salario_base = req.body.salario_base;
+
+  // Escribir nuevamente en el archivo la lista de empleados
+  fs.writeFileSync(archivo, JSON.stringify(empleados, null, 4));
+
+  // Devolver como respuesta el empleado con sus datos nuevos
+  res.json(empleados[indiceEmpleadoEditar]);
 });
 
 // =========== ELIMINAR EMPLEADO ===========
@@ -74,4 +96,8 @@ app.delete("/eliminarEmpleado/:id", (req, res) => {
   fs.writeFileSync(archivo, JSON.stringify(empleadosNuevos, null, 4));
 
   res.json(empleadosNuevos);
+});
+
+app.listen(PORT, () => {
+  console.log("Servidor iniciado en http://localhost:" + PORT);
 });

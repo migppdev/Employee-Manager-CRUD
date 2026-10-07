@@ -78,6 +78,7 @@ export function comprobarNombre(nombre) {
   return /^[a-zA-Z]{2,}$/.test(nombre);
 }
 
+
 // Funcion para obtener los campos erroneos en un empleado
 export function obtenerCamposErroneos(empleado) {
   // Crear una array vacia para ir metiendo el id de los campos erroneos

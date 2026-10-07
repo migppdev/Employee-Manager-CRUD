@@ -12,11 +12,21 @@ import { listaCampos } from "./utils.js";
 
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
 
-window.notificar = notificar;
+window.empleadoid = obtenerEmpleadoPorId;
 
 window.addEventListener("load", () => {
   cargarEmpleados();
 });
+
+// Obtener empleado por ID
+export function obtenerEmpleadoPorId(idEmpleado) {
+  return fetch("/empleados/" + idEmpleado)
+    .then((response) => response.json())
+    .then((empleado) => {
+      console.log(empleado);
+      return empleado;
+    });
+}
 
 // =========== VISUALIZACION ===========
 
@@ -31,8 +41,8 @@ function cargarEmpleados() {
         tablaEmpleados.innerHTML += `
         <tr>
             <td>${empleado.nombre}</td>
-            <td>${empleado.apellidos.primer_apellido}</td>
-            <td>${empleado.apellidos.segundo_apellido}</td>
+            <td>${empleado.apellidos.apellido_1}</td>
+            <td>${empleado.apellidos.apellido_2}</td>
             <td>${empleado.dni}</td>
             <td>${empleado.puesto}</td>
             <td>${empleado.fecha_incorporacion}</td>
@@ -40,9 +50,9 @@ function cargarEmpleados() {
             <td>${antiguedad}</td>
             <td>${calcularSalario(empleado.salario_base, antiguedad)}</td> 
             <td>
-              <button class="btn-accion" data-id="${empleado.id}">Editar</button>
+              <button class="btn-accion btn-editar" data-id="${empleado.id}">Editar</button>
 
-              <button class="btn-accion btn-eliminar " data-id="${empleado.id}">Eliminar</button>
+              <button class="btn-accion btn-eliminar" data-id="${empleado.id}">Eliminar</button>
               
             </td>
         </tr>
@@ -55,8 +65,8 @@ function cargarEmpleados() {
 export function crearEmpleado() {
   const empleado = {
     nombre: document.getElementById("nombre").value,
-    apellido1: document.getElementById("apellido-1").value,
-    apellido2: document.getElementById("apellido-2").value,
+    apellido_1: document.getElementById("apellido-1").value,
+    apellido_2: document.getElementById("apellido-2").value,
     dni: document.getElementById("dni").value,
     puesto: document.getElementById("puesto").value,
     fecha_incorporacion: document.getElementById("fecha-incorporacion").value,
@@ -90,6 +100,18 @@ export function crearEmpleado() {
     });
   }
 }
+
+// =========== EDITAR EMPLEADO ===========
+// * por completar
+export const editarEmpleado = (empleado) => {
+  // Sacar datos del modal
+
+  fetch("/editarEmpleado/" + empleado.id, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(empleado),
+  });
+};
 
 // =========== ELIMINAR EMPLEADO ===========
 

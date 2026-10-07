@@ -42,7 +42,7 @@
       <div id="modal-crear-empleado" class="modal">
         <div class="modal-contenido">
           <h1>Crear empleado</h1>
-          <form action="" class="form">
+          <form class="form">
             <div class="fila-form">
               <label for="nombre">Nombre</label>
               <input type="text" id="nombre" required />
@@ -83,11 +83,55 @@
         </div>
       </div>
 
-      <div class="notificacion" id="notificacion">
-        <div class="notificacion-icono" id="notificacion-icono">x</div>
-        <div class="notificacion-contenido" id="notificacion-contenido">
-          prueba mensaje
+      <div id="modal-editar-empleado" class="modal">
+        <div class="modal-contenido">
+          <h1>Editar empleado</h1>
+          <form class="form">
+            <div class="fila-form">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre-editar" required />
+            </div>
+            <div class="fila-form">
+              <label for="apellido-1">Primer apellido</label>
+              <input type="text" id="apellido-1-editar" required />
+            </div>
+            <div class="fila-form">
+              <label for="apellido-2">Segundo apellido</label>
+              <input type="text" id="apellido-2-editar" />
+            </div>
+            <div class="fila-form">
+              <label for="dni">DNI</label>
+              <input type="text" id="dni-editar" />
+            </div>
+            <div class="fila-form">
+              <label for="puesto">Puesto</label>
+              <input type="text" id="puesto-editar" />
+            </div>
+            <div class="fila-form">
+              <label for="fecha-incorporacion">Fecha de incorporación</label>
+              <input type="date" id="fecha-incorporacion-editar" />
+            </div>
+            <div class="fila-form">
+              <label for="salario-base">Salario base</label>
+              <input type="number" id="salario-base-editar" />
+            </div>
+            <div class="fila-botones">
+              <!-- !  Comprobar que coincide id-->
+              <button type="button" class="btn" id="editar-empleado-btn">
+                Crear
+              </button>
+              <!-- !  Comprobar que esta implementado cerrar modal con este id (editar)-->
+              <button type="button" class="btn" id="cerrar-modal-editar-btn">
+                Cancelar
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
+
+      <div class="notificacion" id="notificacion">
+        <div class="notificacion-icono" id="notificacion-icono"></div>
+        <div class="notificacion-contenido" id="notificacion-contenido"></div>
       </div>
     </main>
 
