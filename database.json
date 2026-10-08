@@ -1,29 +1,5 @@
 [
   {
-    "id": 4,
-    "nombre": "Marta",
-    "apellidos": {
-      "apellido_1": "Sanchez",
-      "apellido_2": "Navarro"
-    },
-    "dni": "62947183R",
-    "puesto": "Dependienta",
-    "fecha_incorporacion": "2017-09-18",
-    "salario_base": 1200
-  },
-  {
-    "id": 5,
-    "nombre": "Javier",
-    "apellidos": {
-      "apellido_1": "Perez",
-      "apellido_2": "Moreno"
-    },
-    "dni": "71462935W",
-    "puesto": "Vendedor de guitarras",
-    "fecha_incorporacion": "2017-03-03",
-    "salario_base": 1350
-  },
-  {
     "id": 6,
     "nombre": "Ana",
     "apellidos": {

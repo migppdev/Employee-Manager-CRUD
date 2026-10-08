@@ -12,21 +12,9 @@ import { listaCampos } from "./utils.js";
 
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
 
-window.empleadoid = obtenerEmpleadoPorId;
-
 window.addEventListener("load", () => {
   cargarEmpleados();
 });
-
-// Obtener empleado por ID
-export function obtenerEmpleadoPorId(idEmpleado) {
-  return fetch("/empleados/" + idEmpleado)
-    .then((response) => response.json())
-    .then((empleado) => {
-      console.log(empleado);
-      return empleado;
-    });
-}
 
 // =========== VISUALIZACION ===========
 
@@ -73,7 +61,7 @@ export function crearEmpleado() {
     salario_base: document.getElementById("salario-base").value,
   };
 
-  let camposErroneos = obtenerCamposErroneos(empleado);
+  let camposErroneos = obtenerCamposErroneos(empleado, "crear");
 
   // Comprobar si hay campos erroneos
   if (camposErroneos.length === 0) {
@@ -102,15 +90,27 @@ export function crearEmpleado() {
 }
 
 // =========== EDITAR EMPLEADO ===========
-// * por completar
-export const editarEmpleado = (empleado) => {
-  // Sacar datos del modal
+export const abrirModalEditar = (idEmpleado) => {
+  // Cargar datos del empleado en el formulario
+  fetch("/empleados/")
+    .then((response) => response.json())
+    .then((empleados) => {
+      // Busco en la lista de empleados el empleado con ID = parámetro
+      const empleado = empleados.find((empleado) => empleado.id == idEmpleado);
 
-  fetch("/editarEmpleado/" + empleado.id, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(empleado),
-  });
+      //	Cargar en el formulario los datos del empleado
+      document.getElementById("nombre-editar").value = empleado.nombre;
+      document.getElementById("apellido-1-editar").value =
+        empleado.apellidos.apellido_1;
+      document.getElementById("apellido-2-editar").value =
+        empleado.apellidos.apellido_2;
+      document.getElementById("dni-editar").value = empleado.dni;
+      document.getElementById("puesto-editar").value = empleado.puesto;
+      document.getElementById("fecha-incorporacion-editar").value =
+        empleado.fecha_incorporacion;
+      document.getElementById("salario-base-editar").value =
+        empleado.salario_base;
+    });
 };
 
 // =========== ELIMINAR EMPLEADO ===========

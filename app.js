@@ -17,6 +17,7 @@ app.get("/empleados", (req, res) => {
 
 // =========== CREAR EMPLEADO ===========
 app.post("/crearEmpleado", (req, res) => {
+  console.log("Entra en api crear empleado");
   // Guardar la ruta del archivo
   const archivo = "./database.json";
 
@@ -31,8 +32,8 @@ app.post("/crearEmpleado", (req, res) => {
     id: empleados.length + 1,
     nombre: req.body.nombre,
     apellidos: {
-      primer_apellido: req.body.apellido1,
-      segundo_apellido: req.body.apellido2,
+      apellido_1: req.body.apellido_1,
+      apellido_2: req.body.apellido_2,
     },
     dni: req.body.dni,
     puesto: req.body.puesto,
@@ -56,7 +57,7 @@ app.put("/editarEmpleado/:id", (req, res) => {
 
   let empleados = JSON.parse(datos);
 
-  // Guardar el indice del empleado a editar dentro de la lista de empleados anterior
+  // Guardar el indice del empleado a editar
   const indiceEmpleadoEditar = empleados.findIndex(
     (empleado) => empleado.id == req.params.id,
   );

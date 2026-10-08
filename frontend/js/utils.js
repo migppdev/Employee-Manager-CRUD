@@ -7,6 +7,15 @@ export const listaCampos = [
   "fecha-incorporacion",
   "salario-base",
 ];
+export const listaCamposEditar = [
+  "nombre-editar",
+  "apellido-1-editar",
+  "apellido-2-editar",
+  "dni-editar",
+  "puesto-editar",
+  "fecha-incorporacion-editar",
+  "salario-base-editar",
+];
 
 // =========== CALCULAR ANTIGUEDAD ===========
 export function calcularAntiguedad(fechaInicio) {
@@ -78,25 +87,38 @@ export function comprobarNombre(nombre) {
   return /^[a-zA-Z]{2,}$/.test(nombre);
 }
 
-
 // Funcion para obtener los campos erroneos en un empleado
-export function obtenerCamposErroneos(empleado) {
+export function obtenerCamposErroneos(empleado, tipoModal) {
   // Crear una array vacia para ir metiendo el id de los campos erroneos
   let camposErroneos = [];
 
-  if (!comprobarDNI(empleado.dni)) {
-    camposErroneos.push("dni");
+  if (tipoModal === "crear") {
+    if (!comprobarDNI(empleado.dni)) {
+      camposErroneos.push("dni");
+    }
+    if (!comprobarNombre(empleado.nombre)) {
+      camposErroneos.push("nombre");
+    }
+    if (!comprobarNombre(empleado.apellido_1)) {
+      camposErroneos.push("apellido-1");
+    }
+    if (!comprobarNombre(empleado.apellido_2)) {
+      camposErroneos.push("apellido-2");
+    }
+  } else if (tipoModal == "editar") {
+    if (!comprobarDNI(empleado.dni)) {
+      camposErroneos.push("dni-editar");
+    }
+    if (!comprobarNombre(empleado.nombre)) {
+      camposErroneos.push("nombre-editar");
+    }
+    if (!comprobarNombre(empleado.apellido_1)) {
+      camposErroneos.push("apellido-1-editar");
+    }
+    if (!comprobarNombre(empleado.apellido_2)) {
+      camposErroneos.push("apellido-2-editar");
+    }
   }
-  if (!comprobarNombre(empleado.nombre)) {
-    camposErroneos.push("nombre");
-  }
-  if (!comprobarNombre(empleado.apellido1)) {
-    camposErroneos.push("apellido-1");
-  }
-  if (!comprobarNombre(empleado.apellido2)) {
-    camposErroneos.push("apellido-2");
-  }
-
   return camposErroneos;
 }
 
