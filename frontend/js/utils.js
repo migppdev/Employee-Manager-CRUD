@@ -71,6 +71,11 @@ export function limpiarModal() {
   });
 }
 
+export function cerrarModales() {
+  document.getElementById("modal-crear-empleado").style.display = "none";
+  document.getElementById("modal-editar-empleado").style.display = "none";
+}
+
 export function comprobarDNI(dni) {
   // Comprobar DNI
   let regexDNI = /^[0-9]{8}[A-Z]$/;
@@ -78,7 +83,7 @@ export function comprobarDNI(dni) {
 }
 
 export function comprobarNombre(nombre) {
-  return /^[a-zA-Z]{2,}$/.test(nombre);
+  return /^[a-zA-ZñÑ]{2,}$/.test(nombre);
 }
 
 // Funcion para obtener los campos erroneos en un empleado

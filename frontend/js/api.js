@@ -5,6 +5,7 @@ import {
   marcarCampoError,
   limpiarEstiloError,
   notificar,
+  cerrarModales,
 } from "./utils.js";
 
 import { listaCampos, listaCamposEditar } from "./utils.js";
@@ -83,6 +84,7 @@ export function crearEmpleado() {
       .then(() => {
         cargarEmpleados();
         limpiarEstiloError(listaCampos);
+        cerrarModales();
         notificar("Empleado creado correctamente", "info");
       });
   } else {
@@ -142,11 +144,12 @@ export const editarEmpleado = () => {
       body: JSON.stringify(empleadoEditar),
     })
       .then((response) => response.json())
-      .then(
-        cargarEmpleados(),
-        limpiarEstiloError(listaCamposEditar),
-        notificar("Empleado editado correctamente", "info"),
-      );
+      .then(() => {
+        cargarEmpleados();
+        limpiarEstiloError(listaCamposEditar);
+        cerrarModales();
+        notificar("Empleado editado correctamente", "info");
+      });
   } else {
     camposErroneos.forEach((campo) => {
       marcarCampoError(campo);

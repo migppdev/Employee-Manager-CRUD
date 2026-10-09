@@ -6,7 +6,13 @@ import {
   generarNominas,
   obtenerEmpleadoPorId,
 } from "./api.js";
-import { listaCampos, limpiarModal, limpiarEstiloError } from "./utils.js";
+import {
+  listaCampos,
+  limpiarModal,
+  limpiarEstiloError,
+  listaCamposEditar,
+  cerrarModales,
+} from "./utils.js";
 
 const generarNominasBtn = document.querySelector("#nominas-btn");
 
@@ -35,9 +41,9 @@ cerrarModalBtns.forEach((cerrarModalBtn) => {
     limpiarModal();
     // Quitar estilos de error
     limpiarEstiloError(listaCampos);
+    limpiarEstiloError(listaCamposEditar);
     // Ocultar los modales
-    document.getElementById("modal-crear-empleado").style.display = "none";
-    document.getElementById("modal-editar-empleado").style.display = "none";
+    cerrarModales();
   });
 });
 
