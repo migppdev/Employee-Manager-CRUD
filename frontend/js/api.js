@@ -1,14 +1,13 @@
 import {
   calcularAntiguedad,
   calcularSalario,
-  cerrarModales,
   obtenerCamposErroneos,
   marcarCampoError,
   limpiarEstiloError,
   notificar,
 } from "./utils.js";
 
-import { listaCampos } from "./utils.js";
+import { listaCampos, listaCamposEditar } from "./utils.js";
 
 const tablaEmpleados = document.getElementById("cuerpo-tabla-empleados");
 
@@ -79,7 +78,6 @@ export function crearEmpleado() {
       .then(() => {
         cargarEmpleados();
         limpiarEstiloError(listaCampos);
-        cerrarModales();
         notificar("Empleado creado correctamente", "info");
       });
   } else {
@@ -99,6 +97,7 @@ export const abrirModalEditar = (idEmpleado) => {
       const empleado = empleados.find((empleado) => empleado.id == idEmpleado);
 
       //	Cargar en el formulario los datos del empleado
+      document.getElementById("id-editar").value = empleado.id;
       document.getElementById("nombre-editar").value = empleado.nombre;
       document.getElementById("apellido-1-editar").value =
         empleado.apellidos.apellido_1;
@@ -111,6 +110,43 @@ export const abrirModalEditar = (idEmpleado) => {
       document.getElementById("salario-base-editar").value =
         empleado.salario_base;
     });
+};
+
+export const editarEmpleado = () => {
+  const empleadoEditar = {
+    id: document.getElementById("id-editar").value,
+    nombre: document.getElementById("nombre-editar").value,
+    apellido_1: document.getElementById("apellido-1-editar").value,
+    apellido_2: document.getElementById("apellido-2-editar").value,
+    dni: document.getElementById("dni-editar").value,
+    puesto: document.getElementById("puesto-editar").value,
+    fecha_incorporacion: document.getElementById("fecha-incorporacion-editar")
+      .value,
+    salario_base: document.getElementById("salario-base-editar").value,
+  };
+
+  let camposErroneos = obtenerCamposErroneos(empleadoEditar, "editar");
+
+  if (camposErroneos.length === 0) {
+    console.log(empleadoEditar);
+    fetch("/editarEmpleado/" + empleadoEditar.id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(empleadoEditar),
+    })
+      .then((response) => response.json())
+      .then(
+        cargarEmpleados(),
+        limpiarEstiloError(listaCamposEditar),
+        notificar("Empleado editado correctamente", "info"),
+      );
+  } else {
+    camposErroneos.forEach((campo) => {
+      marcarCampoError(campo);
+    });
+  }
 };
 
 // =========== ELIMINAR EMPLEADO ===========

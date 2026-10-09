@@ -71,12 +71,6 @@ export function limpiarModal() {
   });
 }
 
-export function cerrarModales() {
-  document.getElementById("modal-crear-empleado").style.display = "none";
-  limpiarEstiloError(listaCampos);
-  limpiarModal();
-}
-
 export function comprobarDNI(dni) {
   // Comprobar DNI
   let regexDNI = /^[0-9]{8}[A-Z]$/;

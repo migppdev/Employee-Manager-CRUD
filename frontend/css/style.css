@@ -128,7 +128,8 @@ nav {
   gap: 1em;
 }
 
-.modal #crear-empleado-btn {
+.modal #crear-empleado-btn,
+.modal #editar-empleado-btn {
   background-color: lightgreen;
 }
 .notificacion {

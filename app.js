@@ -64,10 +64,8 @@ app.put("/editarEmpleado/:id", (req, res) => {
 
   // Modificar los datos del empleado a editar en el array de empleados
   empleados[indiceEmpleadoEditar].nombre = req.body.nombre;
-  empleados[indiceEmpleadoEditar].apellidos.apellido_1 =
-    req.body.apellidos.apellido_1;
-  empleados[indiceEmpleadoEditar].apellidos.apellido_2 =
-    req.body.apellidos.apellido_2;
+  empleados[indiceEmpleadoEditar].apellidos.apellido_1 = req.body.apellido_1;
+  empleados[indiceEmpleadoEditar].apellidos.apellido_2 = req.body.apellido_2;
   empleados[indiceEmpleadoEditar].dni = req.body.dni;
   empleados[indiceEmpleadoEditar].puesto = req.body.puesto;
   empleados[indiceEmpleadoEditar].fecha_incorporacion =

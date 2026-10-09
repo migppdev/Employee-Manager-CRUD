@@ -1,4 +1,9 @@
-import { abrirModalEditar, eliminarEmpleado, crearEmpleado } from "./api.js";
+import {
+  abrirModalEditar,
+  eliminarEmpleado,
+  crearEmpleado,
+  editarEmpleado,
+} from "./api.js";
 import { listaCampos } from "./utils.js";
 import { limpiarModal, limpiarEstiloError } from "./utils.js";
 
@@ -13,7 +18,7 @@ abrirModalCrearBtn.addEventListener("click", () => {
 });
 
 // Crear una lista de botones que tengan la clase .cerrar-modal-btn
-const cerrarModalBtns = document.querySelectorAll(".cerrar-modal-btn");
+const cerrarModalBtns = document.querySelectorAll(".cerrar-modal-btn ");
 
 // Recorrer cada boton en la lista
 cerrarModalBtns.forEach((cerrarModalBtn) => {
@@ -50,6 +55,14 @@ tablaEmpleados.addEventListener("click", (e) => {
     abrirModalEditar(boton.dataset.id);
     document.getElementById("modal-editar-empleado").style.display = "flex";
   }
+});
+
+// *==== BOTON CONFIRMAR EDICION EMPLEADO (DENTRO MODAL) ====
+const editarEmpleadoBtn = document.getElementById("editar-empleado-btn");
+
+editarEmpleadoBtn.addEventListener("click", () => {
+  console.log("El boton funciona");
+  editarEmpleado();
 });
 
 // *============== BOTON ELIMINAR ==============

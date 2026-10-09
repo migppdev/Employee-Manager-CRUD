@@ -72,7 +72,11 @@
               <input type="number" id="salario-base" />
             </div>
             <div class="fila-botones">
-              <button type="button" class="btn" id="crear-empleado-btn">
+              <button
+                type="button"
+                class="btn cerrar-modal-btn"
+                id="crear-empleado-btn"
+              >
                 Crear
               </button>
               <button type="button" class="btn cerrar-modal-btn">
@@ -87,6 +91,7 @@
         <div class="modal-contenido">
           <h1>Editar empleado</h1>
           <form class="form">
+            <input type="hidden" id="id-editar" disabled />
             <div class="fila-form">
               <label for="nombre">Nombre</label>
               <input type="text" id="nombre-editar" required />
@@ -117,10 +122,13 @@
             </div>
             <div class="fila-botones">
               <!-- !  Comprobar que coincide id-->
-              <button type="button" class="btn" id="editar-empleado-btn">
-                Crear
+              <button
+                type="button"
+                class="btn cerrar-modal-btn"
+                id="editar-empleado-btn"
+              >
+                Confirmar cambios
               </button>
-              <!-- !  Comprobar que esta implementado cerrar modal con este id (editar)-->
               <button
                 type="button"
                 class="btn cerrar-modal-btn"
