@@ -6,6 +6,7 @@ app.use(express.static("frontend"));
 app.use(express.json());
 
 const fs = require("fs");
+const { calcularAntiguedad, calcularSalario } = require("./frontend/js/utils");
 
 // =========== DEVOLVER EMPLEADOS  ===========
 app.get("/empleados", (req, res) => {
@@ -13,6 +14,18 @@ app.get("/empleados", (req, res) => {
   const datos = JSON.parse(archivo);
 
   res.json(datos);
+});
+
+// =========== OBTENER EMPLEADO POR ID ===========
+app.get("/empleados/:id", (req, res) => {
+  const archivo = "./database.json";
+  const datos = fs.readFileSync(archivo);
+
+  const empleados = JSON.parse(datos);
+
+  const empleado = empleados.find((empleado) => empleado.id == req.params.id);
+
+  res.json(empleado);
 });
 
 // =========== CREAR EMPLEADO ===========
@@ -95,6 +108,57 @@ app.delete("/eliminarEmpleado/:id", (req, res) => {
   fs.writeFileSync(archivo, JSON.stringify(empleadosNuevos, null, 4));
 
   res.json(empleadosNuevos);
+});
+
+// =========== GENERAR NÓMINAS ===========
+app.get("/generarNominas", (req, res) => {
+  const archivo = "./database.json";
+  const datos = fs.readFileSync(archivo);
+
+  const rutaArchivoNominas = "./nominas.txt";
+  const empleados = JSON.parse(datos);
+
+  const tituloArchivo = `========================================
+NÓMINAS EMPRESA TIENDA DE INSTRUMENTOS
+========================================\n`;
+
+  // Crear archivo nominas.txt
+  fs.writeFileSync(rutaArchivoNominas, "", "utf-8");
+
+  // Escribir título
+  fs.appendFileSync(rutaArchivoNominas, tituloArchivo);
+
+  empleados.forEach((empleado) => {
+    // Guardar el nombre completo en una variable
+    let nombreCompleto =
+      empleado.nombre +
+      " " +
+      empleado.apellidos.apellido_1 +
+      " " +
+      empleado.apellidos.apellido_2;
+
+    // Guardo la antiguedad y salario final en  variables para no repetir llamadas a funciones
+    let antiguedad = calcularAntiguedad(empleado.fecha_incorporacion);
+    let salarioFinal = calcularSalario(empleado.salario_base, antiguedad);
+
+    fs.appendFileSync(rutaArchivoNominas, "Empleado: " + nombreCompleto + "\n");
+    fs.appendFileSync(rutaArchivoNominas, "DNI: " + empleado.dni + "\n");
+    fs.appendFileSync(rutaArchivoNominas, "Puesto: " + empleado.puesto + "\n");
+    fs.appendFileSync(rutaArchivoNominas, "Antiguedad: " + antiguedad + "\n");
+    fs.appendFileSync(
+      rutaArchivoNominas,
+      "Salario base: " + empleado.salario_base + "\n",
+    );
+    fs.appendFileSync(
+      rutaArchivoNominas,
+      "Salario final: " + salarioFinal + "\n",
+    );
+    fs.appendFileSync(
+      rutaArchivoNominas,
+      "----------------------------------------\n",
+    );
+  });
+  res.download(rutaArchivoNominas);
 });
 
 app.listen(PORT, () => {

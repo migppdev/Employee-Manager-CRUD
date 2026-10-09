@@ -15,6 +15,11 @@ window.addEventListener("load", () => {
   cargarEmpleados();
 });
 
+// =========== OBTENER EMPLEADO POR ID ===========
+export function obtenerEmpleadoPorId(idEmpleado) {
+  return fetch("/empleados/" + idEmpleado).then((response) => response.json());
+}
+
 // =========== VISUALIZACION ===========
 
 // Insertar empleados en la tabla
@@ -159,5 +164,19 @@ export const eliminarEmpleado = (idEmpleado) => {
     .then(() => {
       cargarEmpleados();
       notificar("Empleado eliminado correctamente", "info");
+    });
+};
+
+// =========== GENERAR NOMINAS ===========
+export const generarNominas = () => {
+  fetch("/generarNominas/")
+    // Guardar la respuesta como un blob (Binary Large Object)
+    .then((response) => response.blob())
+    .then((blob) => {
+      // Simular el clic en un elemento <a> que tiene el atributo download y una url para este blob
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "nominas.txt";
+      a.click();
     });
 };

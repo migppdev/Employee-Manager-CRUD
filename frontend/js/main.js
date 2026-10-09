@@ -3,9 +3,16 @@ import {
   eliminarEmpleado,
   crearEmpleado,
   editarEmpleado,
+  generarNominas,
+  obtenerEmpleadoPorId,
 } from "./api.js";
-import { listaCampos } from "./utils.js";
-import { limpiarModal, limpiarEstiloError } from "./utils.js";
+import { listaCampos, limpiarModal, limpiarEstiloError } from "./utils.js";
+
+const generarNominasBtn = document.querySelector("#nominas-btn");
+
+generarNominasBtn.addEventListener("click", () => {
+  generarNominas();
+});
 
 const tablaEmpleados = document.querySelector("#cuerpo-tabla-empleados");
 
@@ -76,7 +83,18 @@ tablaEmpleados.addEventListener("click", (e) => {
 
   // Si el boton contiene la clase "btn-eliminar"
   if (boton.classList.contains("btn-eliminar")) {
-    // Llamar a la funcion eliminarEmpleado pasandole como parametro el id del dataset (data-id)
-    eliminarEmpleado(boton.dataset.id);
+    obtenerEmpleadoPorId(boton.dataset.id).then((empleado) => {
+      if (
+        confirm(
+          "¿Eliminar empleado " +
+            empleado.nombre +
+            " con DNI: " +
+            empleado.dni +
+            "?",
+        )
+      ) {
+        eliminarEmpleado(boton.dataset.id);
+      }
+    });
   }
 });
